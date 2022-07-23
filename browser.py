@@ -21,13 +21,15 @@ class Browser:
             )
         elif name == "chrome":
             coptions = OpsC()
-            #coptions.add_argument("--headless")
+            coptions.add_argument("--headless")
             coptions.add_argument("--disable-notifications")
             self.driver = webdriver.Chrome(
                 ChromeDriverManager().install(), chrome_options=coptions
             )
         elif name == "remote":
             roptions = webdriver.ChromeOptions()
+            roptions.add_argument("--headless")
+            roptions.add_argument("--disable-notifications")
             self.driver = webdriver.Remote(
                 command_executor='http://192.168.11.8:4444',
                 options=roptions
